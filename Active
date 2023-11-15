@@ -80,9 +80,9 @@ public abstract class Active {
     //Clase Trabajador
     public static class Worker extends Active {
         private String kind;
-        public Worker(int id, String name, String lastName, int age,  int cellphone, String home, String type) {
+        public Worker(int id, String name, String lastName, int age,  int cellphone, String home, String kind) {
             super(id, name, lastName, age, cellphone, home, "Worker");
-            this.kind = type;
+            this.kind = kind;
         }
         public String getKind(){
             return kind;
@@ -98,6 +98,7 @@ public abstract class Active {
         private String position;
         public Student(int id, String name, String lastName, int age,  int cellphone, String home, String position) {
             super(id, name, lastName, age, cellphone, home,"Student");
+            this.position = position;
         }
         public String getPosition(){
             return position;
