@@ -1,9 +1,9 @@
 package model;
-
+//Clase abstracta para extender a nuevas subclases sus caracteristicas
 public abstract class Active {
     private int age, id, cellphone;
     private String home, name, lastName;
-
+//Constructor de la clase abtracta, inicializador
     public Active(int id, String name, String lastName, int age, int cellphone, String home, String type) {
         this.age = age;
         this.id = id;
@@ -12,6 +12,7 @@ public abstract class Active {
         this.name = name;
         this.lastName = lastName;
     }
+    //getters and setters
     public int getAge() {
         return age;
     }
@@ -59,6 +60,9 @@ public abstract class Active {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
+    //Clases internas que extienden a Active y tienen sus propias caracteristicas y metodos
+    //Clase Profesor
     public static class Teacher extends Active {
         private String topic;
         public Teacher(int id, String name, String lastName, int age,  int cellphone, String home, String topic) {
@@ -72,6 +76,8 @@ public abstract class Active {
             this.topic=topic;
         }
     }
+    
+    //Clase Trabajador
     public static class Worker extends Active {
         private String kind;
         public Worker(int id, String name, String lastName, int age,  int cellphone, String home, String type) {
@@ -86,6 +92,8 @@ public abstract class Active {
             this.kind = kind;
         }
     }
+    
+    //Clase Estudiante
     public static class Student extends Active {
         private String position;
         public Student(int id, String name, String lastName, int age,  int cellphone, String home, String position) {
