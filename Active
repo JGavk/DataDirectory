@@ -1,0 +1,101 @@
+package model;
+
+public abstract class Active {
+    private int age, id, cellphone;
+    private String home, name, lastName;
+
+    public Active(int id, String name, String lastName, int age, int cellphone, String home, String type) {
+        this.age = age;
+        this.id = id;
+        this.cellphone = cellphone;
+        this.home = home;
+        this.name = name;
+        this.lastName = lastName;
+    }
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCellphone() {
+        return cellphone;
+    }
+
+    public void setCellphone(int cellphone) {
+        this.cellphone = cellphone;
+    }
+
+    public String getHome() {
+        return home;
+    }
+
+    public void setHome(String home) {
+        this.home = home;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public class Teacher extends Active {
+        private String topic;
+        public Teacher(int id, String name, String lastName, int age,  int cellphone, String home, String topic) {
+            super(id, name, lastName, age, cellphone, home, "Teacher");
+            this.topic = topic;
+        }
+        public String getTopic(){
+            return topic;
+        }
+        public void setTopic(String topic){
+            this.topic=topic;
+        }
+    }
+    public class Worker extends Active {
+        private String kind;
+        public Worker(int id, String name, String lastName, int age,  int cellphone, String home, String type) {
+            super(id, name, lastName, age, cellphone, home, "Worker");
+            this.kind = type;
+        }
+        public String getKind(){
+            return kind;
+        }
+
+        public void setKind(String kind) {
+            this.kind = kind;
+        }
+    }
+    public class Student extends Active {
+        private String position;
+        public Student(int id, String name, String lastName, int age,  int cellphone, String home, String position) {
+            super(id, name, lastName, age, cellphone, home,"Student");
+        }
+        public String getPosition(){
+            return position;
+        }
+        public void setPosition(String position){
+            this.position = position;
+        }
+    }
+}
