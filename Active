@@ -59,7 +59,7 @@ public abstract class Active {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public class Teacher extends Active {
+    public static class Teacher extends Active {
         private String topic;
         public Teacher(int id, String name, String lastName, int age,  int cellphone, String home, String topic) {
             super(id, name, lastName, age, cellphone, home, "Teacher");
@@ -72,7 +72,7 @@ public abstract class Active {
             this.topic=topic;
         }
     }
-    public class Worker extends Active {
+    public static class Worker extends Active {
         private String kind;
         public Worker(int id, String name, String lastName, int age,  int cellphone, String home, String type) {
             super(id, name, lastName, age, cellphone, home, "Worker");
@@ -86,7 +86,7 @@ public abstract class Active {
             this.kind = kind;
         }
     }
-    public class Student extends Active {
+    public static class Student extends Active {
         private String position;
         public Student(int id, String name, String lastName, int age,  int cellphone, String home, String position) {
             super(id, name, lastName, age, cellphone, home,"Student");
