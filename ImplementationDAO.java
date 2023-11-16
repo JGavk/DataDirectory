@@ -55,6 +55,7 @@ public class ImplementationDAO {
                 System.out.print("Enter another home address: ");
                 String anotherHome = scanner.next();
                 teacher.addHome(anotherHome);
+                System.out.println(teacher.getHomes());
             } else {
                 break;
             }
@@ -98,6 +99,7 @@ public class ImplementationDAO {
         }
     }
     public void printAllTeachers() {
+        //Este sout es para probar
         System.out.println("COSA "+ structure.getTeachers().toString());
         for (Map.Entry<Integer, Teacher> entry : structure.getTeachers().entrySet()) {
             System.out.println(entry.getValue());
