@@ -105,4 +105,11 @@ public class ImplementationDAO {
             System.out.println(entry.getValue());
         }
     }
+        public static void popOneTeacher(Scanner scanner){
+        int id = scanner.nextInt();
+        if (structure.getTeachers().containsKey(id)){
+            structure.popTeacher(id);
+        }
+
+    }
 }
