@@ -3,10 +3,10 @@ package model;
 import java.util.Map;
 import java.util.Scanner;
 
-public class ImplementationDAO {
+public class TeacherImplementationDAO {
     private static Structure structure;
 
-    public ImplementationDAO() {
+    public TeacherImplementationDAO() {
         this.structure = new Structure();
     }
 
