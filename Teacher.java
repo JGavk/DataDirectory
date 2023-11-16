@@ -19,7 +19,7 @@ public class Teacher extends Active {
 
     public void addCellphone(long cellphone) {
         setCellphone(cellphone);
-        //this.devices.add(cellphone);
+        
     }
 
     public List<Long> getCellphones() {
@@ -44,16 +44,14 @@ public class Teacher extends Active {
     }
 
     public String listToString(List<?> list) {
-        System.out.println("OBJ  " + list.toString());
+        //Testeo de sout para funcion
+
         StringBuilder stringBuilder = new StringBuilder();
         list.forEach(obj -> {
             stringBuilder.append(obj).append(", ");
         });
-            /*for (Object item : list) {
 
-                stringBuilder.append(item).append(", ");
-            }*/
-        return stringBuilder.toString(); //.toString().replaceAll(", $", "");
+        return stringBuilder.toString();
     }
 
     @Override
