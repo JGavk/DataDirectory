@@ -1,14 +1,23 @@
 package model;
-//Clase abstracta para extender a nuevas subclases sus caracteristicas
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+
+//Clase abstracta para extender a nuevas clases sus caracteristicas
 public abstract class Active {
-    private int age, id, cellphone;
+    private int age, id;
+    private List<Long> devices;
+    private List<String> homes;
     private String home, name, lastName;
 //Constructor de la clase abtracta, inicializador
-    public Active(int id, String name, String lastName, int age, int cellphone, String home, String type) {
+    public Active(int id, String name, String lastName, int age, long cellphone, String home, String type) {
         this.age = age;
         this.id = id;
-        this.cellphone = cellphone;
-        this.home = home;
+        this.devices = new ArrayList<>();
+        this.devices.add(cellphone);
+        this.homes = new ArrayList<>();
+        this.homes.add(home);
         this.name = name;
         this.lastName = lastName;
     }
@@ -29,20 +38,20 @@ public abstract class Active {
         this.id = id;
     }
 
-    public int getCellphone() {
-        return cellphone;
+    public List<Long> getCellphone() {
+        return devices;
     }
 
-    public void setCellphone(int cellphone) {
-        this.cellphone = cellphone;
+    public void setCellphone(long cellphone) {
+        this.devices.add(cellphone);
     }
 
-    public String getHome() {
-        return home;
+    public List<String> getHome() {
+        return homes;
     }
 
     public void setHome(String home) {
-        this.home = home;
+        this.homes.add(home);
     }
 
     public String getName() {
@@ -60,51 +69,6 @@ public abstract class Active {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-    //Clases internas que extienden a Active y tienen sus propias caracteristicas y metodos
-    //Clase Profesor
-    public static class Teacher extends Active {
-        private String topic;
-        public Teacher(int id, String name, String lastName, int age,  int cellphone, String home, String topic) {
-            super(id, name, lastName, age, cellphone, home, "Teacher");
-            this.topic = topic;
-        }
-        public String getTopic(){
-            return topic;
-        }
-        public void setTopic(String topic){
-            this.topic=topic;
-        }
-    }
-    
-    //Clase Trabajador
-    public static class Worker extends Active {
-        private String kind;
-        public Worker(int id, String name, String lastName, int age,  int cellphone, String home, String kind) {
-            super(id, name, lastName, age, cellphone, home, "Worker");
-            this.kind = kind;
-        }
-        public String getKind(){
-            return kind;
-        }
 
-        public void setKind(String kind) {
-            this.kind = kind;
-        }
-    }
-    
-    //Clase Estudiante
-    public static class Student extends Active {
-        private String position;
-        public Student(int id, String name, String lastName, int age,  int cellphone, String home, String position) {
-            super(id, name, lastName, age, cellphone, home,"Student");
-            this.position = position;
-        }
-        public String getPosition(){
-            return position;
-        }
-        public void setPosition(String position){
-            this.position = position;
-        }
-    }
+
 }
