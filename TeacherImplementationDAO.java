@@ -1,4 +1,3 @@
-package model;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -9,7 +8,7 @@ public class TeacherImplementationDAO {
     public TeacherImplementationDAO() {
         this.structure = new Structure();
     }
-
+//Todos los prints probablemente se eliminan de aqui cuando se migre al MVC en cada DAO
     public static void addTeacherFromUserInput(Scanner scanner) {
         System.out.print("Enter teacher ID: ");
         int id = scanner.nextInt();
@@ -85,31 +84,27 @@ public class TeacherImplementationDAO {
             System.out.print("Enter new cellphone: ");
             long cellphone = scanner.nextLong();
 
-            System.out.print("Enter new home address: ");
-            String home = scanner.next();
-
-            System.out.print("Enter new topic: ");
-            String topic = scanner.next();
 
             // Llama el metodo Update
-            structure.updateTeacher(id, name, lastName, age, cellphone, home, topic);
+            structure.updateTeacher(id, name, lastName, age, cellphone);
             System.out.println("Teacher updated successfully!");
         } else {
             System.out.println("Teacher with ID " + id + " not found.");
         }
     }
-    public void printAllTeachers() {
-        //Este sout es para probar
-        System.out.println("COSA "+ structure.getTeachers().toString());
-        for (Map.Entry<Integer, Teacher> entry : structure.getTeachers().entrySet()) {
-            System.out.println(entry.getValue());
-        }
-    }
-        public static void popOneTeacher(Scanner scanner){
+    //Deleteo
+    public static void popOneTeacher(Scanner scanner){
         int id = scanner.nextInt();
         if (structure.getTeachers().containsKey(id)){
             structure.popTeacher(id);
         }
 
     }
+    //Implementacion de impresion de todos los profesores
+    public void printAllTeachers() {
+        for (Map.Entry<Integer, Teacher> entry : structure.getTeachers().entrySet()) {
+            System.out.println(entry.getValue());
+        }
+    }
 }
+
