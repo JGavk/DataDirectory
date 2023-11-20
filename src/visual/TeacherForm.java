@@ -1,5 +1,6 @@
 package visual;
 
+import controller.MainController;
 import model.Teacher;
 import model.ImplementationDAO;
 
@@ -8,28 +9,36 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TeacherForm extends JFrame {
+public class TeacherForm extends JFrame implements ActionListener{
     private JTextField idField, nameField, lastNameField, ageField, cellphoneField, homeField, topicField;
 
     private JButton btnAdd, btnUpdate, btnDelete;
+    private MainController controller;
+    private ImplementationDAO impDAO;
+    private VisualRate visualRate;
+    public TeacherForm(ImplementationDAO impDAO, VisualRate visual) {
+        this.impDAO = impDAO;
+        this.controller = controller;
+        this.visualRate = visual;
 
-    private ImplementationDAO teacherDAO;
-
-    public TeacherForm(ImplementationDAO teacherDAO) {
-        this.teacherDAO = teacherDAO;
-        idField = new JTextField(10);
-        nameField = new JTextField(10);
-        lastNameField = new JTextField(10);
-        ageField = new JTextField(10);
-        cellphoneField = new JTextField(10);
-        homeField = new JTextField(10);
-        topicField = new JTextField(10);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(600, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        idField = new JTextField(7);
+        nameField = new JTextField(7);
+        lastNameField = new JTextField(7);
+        ageField = new JTextField(7);
+        cellphoneField = new JTextField(7);
+        homeField = new JTextField(7);
+        topicField = new JTextField(7);
         btnAdd = new JButton("Add");
+        btnAdd.setPreferredSize(new Dimension(100,100));
         btnUpdate = new JButton("Update");
         btnDelete = new JButton("Delete");
 
         // Set up layout
-        JPanel panel = new JPanel(new GridLayout(8, 2));
+        JPanel panel = new JPanel(new GridLayout(9, 1));
         panel.add(new JLabel("ID:"));
         panel.add(idField);
         panel.add(new JLabel("Name:"));
@@ -48,34 +57,23 @@ public class TeacherForm extends JFrame {
         panel.add(btnUpdate);
         panel.add(btnDelete);
 
+
+        btnAdd.addActionListener(this);
         // Add panel to the frame
         getContentPane().add(panel);
 
 
-        btnAdd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addTeacher();
-            }
-        });
 
-        btnUpdate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               // updateTeacher();
-            }
-        });
 
-        btnDelete.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // deleteTeacher();
-            }
-        });
     }
 
-    private void addTeacher() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            addTeacher();
+        }
 
+
+    private void addTeacher() {
         int id = Integer.parseInt(idField.getText());
         String name = nameField.getText();
         String lastName = lastNameField.getText();
@@ -83,11 +81,9 @@ public class TeacherForm extends JFrame {
         long cellphone = Long.parseLong(cellphoneField.getText());
         String home = homeField.getText();
         String topic = topicField.getText();
-
-
         Teacher teacher = new Teacher(id, name, lastName, age, cellphone, home, topic);
-
-
-        teacherDAO.addTeacherFromUserInput(teacher);
+        impDAO.addTeacherFromUserInput(teacher);
+        visualRate.updateTeacherTable(teacher);
+        dispose();
     }
 }
