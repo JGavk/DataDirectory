@@ -7,15 +7,13 @@ import visual.VisualRate;
 
 public class MainController {
     private VisualRate visual;
-    private StudentImplementationDAO stuDAO;
-    private ImplementationDAO teaDAO;
-    private WorkerImplementationDAO worDAO;
+    private ImplementationDAO impDAO;
+
 
     public MainController(){
         this.visual = visual;
-        this.stuDAO = stuDAO;
-        this.teaDAO = teaDAO;
-        this.worDAO = worDAO;
+        this.impDAO = teaDAO;
+
     }
 
 }
