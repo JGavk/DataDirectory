@@ -2,7 +2,7 @@ package visual;
 
 import controller.MainController;
 import model.Teacher;
-import model.ImplementationDAO;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,13 +14,9 @@ public class TeacherForm extends JFrame implements ActionListener{
 
     private JButton btnAdd, btnUpdate, btnDelete;
     private MainController controller;
-    private ImplementationDAO impDAO;
-    private VisualRate visualRate;
-    public TeacherForm(ImplementationDAO impDAO, VisualRate visual) {
-        this.impDAO = impDAO;
+    public TeacherForm(MainController controller) {
         this.controller = controller;
-        this.visualRate = visual;
-
+        
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 500);
         setLocationRelativeTo(null);
@@ -37,7 +33,7 @@ public class TeacherForm extends JFrame implements ActionListener{
         btnUpdate = new JButton("Update");
         btnDelete = new JButton("Delete");
 
-        // Set up layout
+        // Agrega el layout
         JPanel panel = new JPanel(new GridLayout(9, 1));
         panel.add(new JLabel("ID:"));
         panel.add(idField);
@@ -59,10 +55,8 @@ public class TeacherForm extends JFrame implements ActionListener{
 
 
         btnAdd.addActionListener(this);
-        // Add panel to the frame
+        // Añade el panel
         getContentPane().add(panel);
-
-
 
 
     }
@@ -73,28 +67,25 @@ public class TeacherForm extends JFrame implements ActionListener{
         }
 
 
-
     private void addTeacher() {
-        try{
-        int id = Integer.parseInt(idField.getText());
-        String name = nameField.getText();
-        String lastName = lastNameField.getText();
-        int age = Integer.parseInt(ageField.getText());
-        long cellphone = Long.parseLong(cellphoneField.getText());
-        String home = homeField.getText();
-        String topic = topicField.getText();
-        if(impDAO.teacherExists(id)){
-            JOptionPane.showMessageDialog(null,"La ID registrada ya existe","Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        Teacher teacher = new Teacher(id, name, lastName, age, cellphone, home, topic);
-        impDAO.addTeacherFromUserInput(teacher);
-        visualRate.updateTeacherTable(teacher);
+        try {
+            int id = Integer.parseInt(idField.getText());
+            String name = nameField.getText();
+            String lastName = lastNameField.getText();
+            int age = Integer.parseInt(ageField.getText());
+            long cellphone = Long.parseLong(cellphoneField.getText());
+            String home = homeField.getText();
+            String topic = topicField.getText();
 
-        dispose();
+            if (controller.teacherExists(id)) {
+                JOptionPane.showMessageDialog(null, "La ID registrada ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Teacher teacher = new Teacher(id, name, lastName, age, cellphone, home, topic);
+            controller.addTeacherFromForm(teacher);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Invalid input for numeric fields!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No agregaste números en los campos de numeros!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
 }
