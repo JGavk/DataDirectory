@@ -20,7 +20,7 @@ public class MainController {
     }
 
     public void addButton1(){
-        teacherForm = new TeacherForm(impDAO);
+        teacherForm = new TeacherForm(impDAO, visual);
 
     }
 }
