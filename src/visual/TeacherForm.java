@@ -73,7 +73,9 @@ public class TeacherForm extends JFrame implements ActionListener{
         }
 
 
+
     private void addTeacher() {
+        try{
         int id = Integer.parseInt(idField.getText());
         String name = nameField.getText();
         String lastName = lastNameField.getText();
@@ -81,9 +83,18 @@ public class TeacherForm extends JFrame implements ActionListener{
         long cellphone = Long.parseLong(cellphoneField.getText());
         String home = homeField.getText();
         String topic = topicField.getText();
+        if(impDAO.teacherExists(id)){
+            JOptionPane.showMessageDialog(null,"La ID registrada ya existe","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         Teacher teacher = new Teacher(id, name, lastName, age, cellphone, home, topic);
         impDAO.addTeacherFromUserInput(teacher);
         visualRate.updateTeacherTable(teacher);
+
         dispose();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid input for numeric fields!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
+    
 }
