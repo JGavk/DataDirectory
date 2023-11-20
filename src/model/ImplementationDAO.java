@@ -24,6 +24,10 @@ public class ImplementationDAO {
         printAllTeachers();
 
     }
+    
+        public static boolean teacherExists(int id) {
+        return structure.getTeachers().containsKey(id);
+    }
     public static void updateTeacherFromUserInput(Scanner scanner) {
         System.out.print("Enter teacher ID to update: ");
         int id = scanner.nextInt();
