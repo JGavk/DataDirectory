@@ -10,7 +10,6 @@ public class ImplementationDAO {
         this.structure = new Structure();
     }
 //Todos los prints probablemente se eliminan de aqui cuando se migre al MVC en cada DAO
-
     public static void printAllTeachers() {
         for (Map.Entry<Integer, Teacher> entry : structure.getTeachers().entrySet()) {
             System.out.println(entry.getValue());
@@ -143,5 +142,53 @@ public class ImplementationDAO {
         }
 
     }
+    public void printAllWorkers() {
+        //Este sout es para probar
+        for (Map.Entry<Integer, Worker> entry : structure.getWorkers().entrySet()) {
+            System.out.println(entry.getValue());
+        }
+    }
+    public static void addWorkerFromUserInput(Worker worker) {
 
+        structure.addWorker(worker.getId(),  worker);
+
+        System.out.println("Worker added successfully!");
+
+    }
+    public static void updateWorkerFromUserInput(Scanner scanner) {
+        System.out.print("Enter Worker ID to update: ");
+        int id = scanner.nextInt();
+
+        // Mira si existe la ID en worker HashMap
+        if (structure.getWorkers().containsKey(id)) {
+            System.out.print("Enter new name: ");
+            String name = scanner.next();
+
+            System.out.print("Enter new last name: ");
+            String lastName = scanner.next();
+
+            System.out.print("Enter new age: ");
+            int age = scanner.nextInt();
+
+            System.out.print("Enter new cellphone: ");
+            long cellphone = scanner.nextLong();
+
+
+            System.out.print("Enter new topic: ");
+            String topic = scanner.next();
+
+            // Llama el metodo Update
+            structure.updateWorker(id, name, lastName, age, cellphone, topic);
+            System.out.println("Worker updated successfully!");
+        } else {
+            System.out.println("Worker with ID " + id + " not found.");
+        }
+    }
+    public static void popOneWorker(Scanner scanner){
+        int id = scanner.nextInt();
+        if (structure.getWorkers().containsKey(id)){
+            structure.popWorker(id);
+        }
+
+    }
 }
