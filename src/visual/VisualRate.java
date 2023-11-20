@@ -1,6 +1,7 @@
 package visual;
 import controller.MainController;
 import model.ImplementationDAO;
+import model.Teacher;
 
 import java.awt.GridLayout;
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VisualRate extends JFrame {
+public class VisualRate extends JFrame implements  ActionListener{
     private JButton btnDelete1, btnDelete2, btnDelete3 , btnAdd1,btnAdd2,btnAdd3, btnUpdate1,btnUpdate2,btnUpdate3, btnClose;
     private JPanel inputPanel,teacherPanel,teacherBPanel,workerBPanel,studentBPanel,studentPanel,workerPanel, btn1Panel, btn2Panel, btn3Panel;
     private DefaultTableModel teacherTable, studentTable, workerTable;
@@ -19,6 +20,7 @@ public class VisualRate extends JFrame {
     private ImplementationDAO teacherDAO;
     public VisualRate (ImplementationDAO teacherDAO){
         this.teacherDAO = teacherDAO;
+
         setTitle("University Directory");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1200,900);
@@ -97,7 +99,10 @@ public class VisualRate extends JFrame {
         teacherBPanel.add(teacherTitle);
         btn1Panel = new JPanel(new FlowLayout());
         teacherBPanel.add(btn1Panel);
+
         btnAdd1 = new JButton("Añadir");
+        btnAdd1.addActionListener(this);
+
         btnDelete1 = new JButton("Eliminar");
         btnUpdate1 = new JButton("Actualizar");
         btn1Panel.add(btnAdd1);
@@ -147,20 +152,29 @@ public class VisualRate extends JFrame {
 
 
 
-//Listeners
-
-        btnAdd1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TeacherForm teacherForm = new TeacherForm(teacherDAO);
-                teacherForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                teacherForm.setSize(600, 500);
-                teacherForm.setLocationRelativeTo(null);
-                teacherForm.setVisible(true);
-            }
-        });
-
         setVisible(true);
     }
+
+    public void updateTeacherTable(Teacher teacher) {
+
+        System.out.println("Actualiarrrr");
+
+        teacherTable.addRow(new Object[]{teacher.getId(), teacher.getName(),
+                teacher.getLastName(), teacher.getCellphone(),
+                teacher.getHome(), teacher.getTopic()});
+    }
+    //Listeners and controller
+    public void setMainController(MainController controller) {
+        this.controller = controller;
+    }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == btnAdd1) {
+                controller.addButton1();
+
+            }
+        }
+
 
 }
