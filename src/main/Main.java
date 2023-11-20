@@ -6,7 +6,9 @@ import visual.VisualRate;
 
 public class Main {
     public static void main(String[] args) {
-        new VisualRate(new ImplementationDAO());
+        VisualRate visual = new VisualRate(new ImplementationDAO());
+        MainController controller = new MainController();
+        visual.setMainController(controller);
 
 
 
