@@ -1,19 +1,26 @@
 package controller;
 
-import model.StudentImplementationDAO;
 import model.ImplementationDAO;
-import model.WorkerImplementationDAO;
+import visual.TeacherForm;
 import visual.VisualRate;
 
 public class MainController {
     private VisualRate visual;
-    private ImplementationDAO impDAO;
 
+    private ImplementationDAO impDAO;
+    private TeacherForm teacherForm;
 
     public MainController(){
         this.visual = visual;
-        this.impDAO = teaDAO;
-
+        this.impDAO = impDAO;
+        this.teacherForm = teacherForm;
+    }
+    public void setVisual(){
+        this.visual=visual;
     }
 
+    public void addButton1(){
+        teacherForm = new TeacherForm(impDAO);
+
+    }
 }
