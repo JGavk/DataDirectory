@@ -66,7 +66,7 @@ public class TeacherForm extends JFrame implements ActionListener {
 
         getContentPane().add(panel);
     }
-
+//Setter del seleccion ID en fila desde VisualRate
     public void setSelectedID(int selectedID){
         this.selectedID = selectedID;
     }
@@ -82,7 +82,7 @@ public class TeacherForm extends JFrame implements ActionListener {
         addTeacher();
     }
 
-
+//Añade el profesor
     private void addTeacher() {
         try {
             int id = Integer.parseInt(idField.getText());
@@ -104,7 +104,7 @@ public class TeacherForm extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Invalid input for numeric fields!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//Manda al controllador el Actualizado
     private void updateTeacher(){
 
         idField.setEnabled(false);
