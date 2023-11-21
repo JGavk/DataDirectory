@@ -19,26 +19,29 @@ public class Structure {
     }
 
     //Metodo de actualizado de profesores
-    public void updateTeacher(int id, String name, String lastName, int age, long cellphone) {
+    public void updateTeacher(int id, String name, String lastName, int age, long cellphone, String home, String topic) {
         Teacher teacher = teachers.get(id);
         if (teacher!= null) {
             teacher.setName(name);
             teacher.setLastName(lastName);
             teacher.setAge(age);
             teacher.setCellphone(cellphone);
-
-
+            teacher.setHome(home);
+            teacher.setTopic(topic);
         }
     }
 
     //Metodo de borrado de profesores
     public void popTeacher (int id){
-        Teacher teacher = teachers.get(id);
-        if(teacher!=null){
+        teachers.get(id);
+        if(teachers!=null){
             teachers.remove(id);
         }
     }
     //Metodo Getter
+    public Teacher getTeacherId (int id){
+        return teachers.get(id);
+    }
     public HashMap<Integer, Teacher> getTeachers() {
         return teachers;
     }
@@ -49,13 +52,14 @@ public class Structure {
     }
 
     //Metodo de actualizar trabajadores
-    public void updateWorker(int id, String name, String lastName, int age, long cellphone, String kind) {
+    public void updateWorker(int id, String name, String lastName, int age, long cellphone, String home , String kind) {
         Worker worker = workers.get(id);
         if (worker!= null) {
             worker.setName(name);
             worker.setLastName(lastName);
             worker.setAge(age);
             worker.setCellphone(cellphone);
+            worker.setHome(home);
             worker.setKind(kind);
 
         }
@@ -63,8 +67,8 @@ public class Structure {
 
     //Metodo de borrado de trabajadores
     public void popWorker (int id){
-        Worker worker = workers.get(id);
-        if(worker!=null){
+        workers.get(id);
+        if(workers!=null){
             workers.remove(id);
         }
     }
@@ -95,16 +99,22 @@ public class Structure {
 
     //Metodo de borrado de estudiantes
     public void popStudent (int id){
-        Student student = students.get(id);
-        if(student!=null){
+        students.get(id);
+        if(students!=null){
             students.remove(id);
         }
     }
-
+    public Student getStudentId(int id) {
+        return students.get(id);
+    }
     //Getter de estudiantes
     public HashMap<Integer, Student> getStudents() {
         return students;
     }
 
 
+    public Worker getWorkerId(int id) {
+        return workers.get(id);
+    }
 }
+
