@@ -2,8 +2,6 @@ package visual;
 
 import controller.MainController;
 import model.Teacher;
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -66,7 +64,7 @@ public class TeacherForm extends JFrame implements ActionListener {
 
         getContentPane().add(panel);
     }
-//Setter del seleccion ID en fila desde VisualRate
+    //Setter del seleccion ID en fila desde VisualRate
     public void setSelectedID(int selectedID){
         this.selectedID = selectedID;
     }
