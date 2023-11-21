@@ -2,8 +2,6 @@ package visual;
 
 import controller.MainController;
 import model.Student;
-import model.Teacher;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -114,4 +112,3 @@ public class StudentForm extends JFrame implements ActionListener {
     }
 
 }
-
