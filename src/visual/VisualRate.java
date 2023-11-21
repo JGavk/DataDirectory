@@ -1,3 +1,8 @@
+/*
+Juan Pablo Puerta Gaviria 2240033
+Miguel Angel Soto Espitia 2240019
+14/11/23-21/11/23
+*/
 package visual;
 import controller.MainController;
 import model.Student;
